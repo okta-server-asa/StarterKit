@@ -45,7 +45,9 @@ This is a ScaleFT Enrollment Token which you've created in the ScaleFT dashboard
 
 ## Creating the Environment
 
-Run the command `terraform apply` and be sure to check Terraform's output for errors!
+First, run the command `terraform init` to initialize the modules used.
+
+Then, run the command `terraform apply` and be sure to check Terraform's output for errors!
 
 You then wait a little bit, you can pass the time by checking the output of `sft list-servers` to see if your servers are available. Once they both appear there, move on to the next section. If they don't show up there, either Terraform encountered an error, or you may have incorrectly copy-pasted the enrollment token. Feel free to reach out to us to ask for help.
 
