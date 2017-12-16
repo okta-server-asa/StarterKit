@@ -26,7 +26,7 @@ sudo apt-get update
 sudo apt-get install -y curl
 
 echo "Add the ScaleFT testing apt repo to your /etc/apt/sources.list system config file"
-echo "deb http://pkg-testing.scaleft.com/deb/ linux main" | sudo tee -a /etc/apt/sources.list
+echo "deb http://pkg.scaleft.com/deb/ linux main" | sudo tee -a /etc/apt/sources.list
 
 echo "Trust the repository signing key"
 curl -C - https://dist.scaleft.com/pki/scaleft_deb_key.asc | sudo apt-key add -
