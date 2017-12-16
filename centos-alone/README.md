@@ -99,7 +99,7 @@ Of course, you can also run remote commands with SSH, such as `ssh centos-alone 
 
 Check out the Events tab in the ScaleFT Dashboard. You should see multiple audit events related to your `ssh` command, including the dynamic authorization decision that granted you access, the credential issuance step showing the moment that a certificate was issued to you, and the SSH login event showing when you logged into the remote server with SSH authentication algorithm `RSA_CERT`.
 
-When you ran `ssh ubuntu-alone`, in the background, the `ProxyCommand` integration allowed the ScaleFT platform to check if `centos-alone` was the name of a server which you had been granted access to, and then to provide a certificate for that server to your local `ssh` client, along with some helpful configurations, such as the server's IP address and host key.
+When you ran `ssh centos-alone`, in the background, the `ProxyCommand` integration allowed the ScaleFT platform to check if `centos-alone` was the name of a server which you had been granted access to, and then to provide a certificate for that server to your local `ssh` client, along with some helpful configurations, such as the server's IP address and host key.
 
 Learn more: 
 
