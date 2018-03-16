@@ -23,7 +23,7 @@ variable "environment" {
 
 variable "sftd_version" {
   type    = "string"
-  default = "1.34.2"
+  default = "1.33.2"
 }
 
 variable "enrollment_token" {
