@@ -24,7 +24,7 @@ See also: https://www.scaleft.com/docs/client/
 
 ## Terraform Input Variables
 
-Create a `terraform-tfvars` file in this directory. 
+Create a `terraform.tfvars` file in this directory. 
 
 In this file, include the following:
 ```

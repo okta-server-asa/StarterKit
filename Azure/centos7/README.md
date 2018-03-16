@@ -1,4 +1,4 @@
-# ScaleFT Starter Kit: An Ubuntu server behind an Ubuntu bastion
+# ScaleFT Starter Kit: A single CentOS server on Azure
 
 ## Initial Configuration
 
@@ -28,16 +28,18 @@ Create a `terraform.tfvars` file in this directory.
 
 In this file, include the following:
 ```
-access_key = "■■■"
-secret_key = "■■■"
+subscription_id = "■■■"
+client_id       = "■■■"
+client_secret   = "■■■"
+tenant_id       = "■■■"
 enrollment_token = "■■■"
 ```
 
 ### Fields
 
-#### `access_key`, `secret_key`
+#### `subscription_id`, `client_id`, `client_secret`, `tenant_id`
 
-This is an appropriate AWS key id and secret from your AWS account which Terraform will use to create these these servers.
+These values are as described here: https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html#creating-a-service-principal-in-the-azure-portal
 
 #### `enrollment_token`
 
@@ -49,21 +51,15 @@ First, run the command `terraform init` to initialize the modules used.
 
 Then, run the command `terraform apply` and be sure to check Terraform's output for errors!
 
-You then wait a little bit, you can pass the time by checking the output of `sft list-servers` to see if your servers are available. Once they both appear there, move on to the next section. If they don't show up there, either Terraform encountered an error, or you may have incorrectly copy-pasted the enrollment token. Feel free to reach out to us to ask for help.
+You then wait a little bit, you can pass the time by checking the output of `sft list-servers` to see if your server is available. Once it appears there, move on to the next section. If it doesn't show up there, either Terraform encountered an error, or you may have incorrectly copy-pasted the enrollment token. Feel free to reach out to us to ask for help.
 
 ## Trying it out
 
 First, run the command `sft login` to ensure you have an active session with ScaleFT. This may ask you to authenticate via your team's Identity Provider.
 
-Then, run the command `ssh ubuntu-target`. This will drop you into an SSH shell in the remote server behind the bastion. Take a look around. 
+Then, run the command `ssh centos-target`. This will drop you into an SSH shell in the remote server. Take a look around. 
 
 Here are some fun things to check out:
-
-```
-last | head
-```
-
-Look at the IP address you've connected from. It's a private IP address, the address of the `ubuntu-bastion` server we created.
 
 ```
 ls -a ~ 
@@ -95,25 +91,17 @@ sudo cat /var/lib/sftd/ssh_ca.pub
 
 This is the CA public key itself. The ScaleFT agent creates this file when the server is enrolled in the project.
 
-### Connecting directly to the bastion
-
-Just run the command `ssh ubuntu-bastion` and try the commands above out. Note that, this time, you are connecting directly in.
-
 ### Other tools
 
 You can also use ScaleFT with anything else that uses SSH, for example, `rsync`, `git`, `scp`, even Ansible or other configuration management systems.
 
-Of course, you can also run remote commands with SSH, such as `ssh ubuntu-target "hostname ; uptime ; uname -a ;"`
-
-Everything connecting to this server with ScaleFT will be transparently routed over the bastion.
+Of course, you can also run remote commands with SSH, such as `ssh centos-****alone**** "hostname ; uptime ; uname -a ;"`
 
 ### What happened?
 
-Check out the Events tab in the ScaleFT Dashboard. You should see multiple audit events related to your `ssh` command, including the dynamic authorization decision that granted you access, the credential issuance step showing the moment that a certificate was issued to you, and the SSH login events showing when you logged into the bastion and remote server with SSH authentication algorithm `RSA_CERT`.
+Check out the Events tab in the ScaleFT Dashboard. You should see multiple audit events related to your `ssh` command, including the dynamic authorization decision that granted you access, the credential issuance step showing the moment that a certificate was issued to you, and the SSH login event showing when you logged into the remote server with SSH authentication algorithm `RSA_CERT`.
 
-When you ran `ssh ubuntu-target`, in the background, the `ProxyCommand` integration allowed the ScaleFT platform to check if `ubuntu-target` was the name of a server which you had been granted access to, and then to provide a certificate for that server to your local `ssh` client, along with some helpful configurations, such as the server's IP address and host key.
-
-This is also when your `ssh` client was configured to use the `ubuntu-bastion` server as an SSH bastion. This happened transparently in the background and will also work for any tool which uses SSH as a transport.
+When you ran `ssh centos-target`, in the background, the `ProxyCommand` integration allowed the ScaleFT platform to check if `centos-target` was the name of a server which you had been granted access to, and then to provide a certificate for that server to your local `ssh` client, along with some helpful configurations, such as the server's IP address and host key.
 
 Learn more: 
 
