@@ -1,7 +1,6 @@
 resource "azurerm_virtual_machine" "centos_target" {
   name                  = "centos_target"
   location              = "${var.location}"
-  location              = "${var.location}"
   resource_group_name   = "${var.resource_group}"
   network_interface_ids = ["${var.nic_id}"]
   vm_size               = "Standard_DS1_v2"
@@ -42,6 +41,6 @@ resource "azurerm_virtual_machine" "centos_target" {
   }
 
   tags {
-    environment = "Terraform Demo"
+    environment = "${var.environment}"
   }
 }
