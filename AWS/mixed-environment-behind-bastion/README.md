@@ -22,6 +22,14 @@ Obviously, SSH is easier to use from a Mac or Linux desktop than from Windows. T
 
 See also: https://www.scaleft.com/docs/client/
 
+## Install Terraform
+
+*Note that the following example has been tested up to Terraform v0.11. v0.12 introduces some breaking changes which have yet to be updated.*
+
+Download and install Terraform for your local OS here: https://www.terraform.io/downloads.html
+
+To easily switch between Terraform versions during testing, use tfenv: https://github.com/tfutils/tfenv
+
 ## Terraform Input Variables
 
 Create a `terraform.tfvars` file in this directory. 
