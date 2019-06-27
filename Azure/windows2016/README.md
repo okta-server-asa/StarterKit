@@ -8,6 +8,13 @@ To use this repo, you will need a team and a project. In the project, you will n
 
 You will also need to install & enroll a client. Here are the docs for this: https://www.scaleft.com/docs/setup/enrolling-a-client/
 
+## Install Terraform
+
+*Note that the following example has been tested up to Terraform v0.11. v0.12 introduces some breaking changes which have yet to be updated.*
+
+Download and install Terraform for your local OS here: https://www.terraform.io/downloads.html
+
+To easily switch between Terraform versions during testing, use tfenv: https://github.com/tfutils/tfenv
 
 ## Terraform Input Variables
 

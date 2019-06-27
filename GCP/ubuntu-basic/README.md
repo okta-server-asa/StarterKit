@@ -26,6 +26,14 @@ See also: https://www.scaleft.com/docs/client/
 
 In the GCP console, create a service account from the IAM & Admin section. Download the generated credentials as `credentials.json` in the root of your project. Make sure to add this file to your .gitignore before pushing to a repo as it contains credentials to your GCP account!
 
+## Install Terraform
+
+*Note that the following example has been tested up to Terraform v0.11. v0.12 introduces some breaking changes which have yet to be updated.*
+
+Download and install Terraform for your local OS here: https://www.terraform.io/downloads.html
+
+To easily switch between Terraform versions during testing, use tfenv: https://github.com/tfutils/tfenv
+
 ## Terraform Input Variables
 
 Create a `terraform.tfvars` file in this directory. 
