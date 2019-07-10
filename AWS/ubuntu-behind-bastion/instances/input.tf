@@ -11,7 +11,7 @@ variable vpc_id {
 }
 
 variable subnet {
-  type = "string"
+  type = list(any)
 }
 
 variable sftd_version {

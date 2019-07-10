@@ -24,11 +24,20 @@ See also: https://www.scaleft.com/docs/client/
 
 ## Install Terraform
 
-*Note that the following example has been tested up to Terraform v0.11. v0.12 introduces some breaking changes which have yet to be updated.*
-
 Download and install Terraform for your local OS here: https://www.terraform.io/downloads.html
 
 To easily switch between Terraform versions during testing, use tfenv: https://github.com/tfutils/tfenv
+
+## Generate AWS deployment RSA key.
+
+Generate an RSA key for use with AWS windows system deployment.
+
+Linux:
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/windeployer-rsa
+
+Windows:
+Open a command prompt and run
+ssh-keygen -t rsa -b 4096 -f .ssh/windeployer-rsa
 
 ## Terraform Input Variables
 

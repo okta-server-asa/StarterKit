@@ -2,7 +2,7 @@ resource "aws_vpc" "main" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_hostnames = true
 
-  tags {
+  tags = {
     Name        = "${var.name}-vpc"
     Environment = "${var.environment}"
     terraform   = true
@@ -13,7 +13,7 @@ resource "aws_vpc" "main" {
 resource "aws_internet_gateway" "main" {
   vpc_id = "${aws_vpc.main.id}"
 
-  tags {
+  tags = {
     Name        = "${var.name}-gateway"
     Environment = "${var.environment}"
     terraform   = true
@@ -22,7 +22,6 @@ resource "aws_internet_gateway" "main" {
 }
 
 data "aws_region" "current" {
-  current = true
 }
 
 resource "aws_vpc_dhcp_options" "main" {
@@ -32,7 +31,7 @@ resource "aws_vpc_dhcp_options" "main" {
     "AmazonProvidedDNS",
   ]
 
-  tags {
+  tags = {
     Name        = "${var.name}-dhcp-options"
     Environment = "${var.environment}"
     terraform   = true

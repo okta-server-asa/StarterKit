@@ -51,14 +51,6 @@ This is an appropriate AWS key id and secret from your AWS account which Terrafo
 
 This is a ScaleFT Enrollment Token which you've created in the ScaleFT dashboard. Be sure to copy the entire enrollment token into this field!
 
-### ~/.ssh/windeployer-rsa.pub
-
-The Terraform variable `aws_key_path` has a default value of `~/.ssh/windeployer-rsa.pub`. This value is fine and you do not need to alter it (although you can if you like), but you *do* need to ensure that an RSA public key exists at this path. An RSA public key is a requirement for deploying Windows servers in EC2 (if you request the Administrator password for a Windows node in EC2 from the AWS console, the AWS console will provide the password encrypted to the RSA public key you provide). 
-
-Using `ssh-keygen`, you can create this RSA public key with the command `ssh-keygen -t rsa -b 4096` and provide the path `~/.ssh/windeployer-rsa.pub` when prompted.
-
-You can also use any other tool or RSA public key you have handy for this, so long as the RSA public key is available at the configured path.
-
 ## Creating the Environment
 
 First, run the command `terraform init` to initialize the modules used.
