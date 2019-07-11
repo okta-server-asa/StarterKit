@@ -25,6 +25,11 @@ variable "sftd_version" {
   default = "1.32.4"
 }
 
+variable "windows_canonical_name" {
+  type    = string
+  default = "win-target"
+}
+
 variable "enrollment_token" {
   type = string
 }

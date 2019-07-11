@@ -1,12 +1,6 @@
 # Install ScaleFT Server Tools
 
 # Write sftd config file with a CanonicalName set
-$sftdcfg = @"
----
-CanonicalName: "${canonical_name}"
-"@
-
-Add-Content "C:\Windows\System32\config\systemprofile\AppData\Local\ScaleFT\sftd.yaml" $sftdcfg
 
 function Get-URL-With-Authenticode(){
     param(
@@ -72,7 +66,9 @@ function Install-ScaleFTServerTools(){
 
         [Parameter(Mandatory=$false)][string]$InstanceURL,
 
-        [Parameter(Mandatory=$false)][string]$ToolsVersion
+        [Parameter(Mandatory=$false)][string]$ToolsVersion,
+
+        [Parameter(Mandatory=$false)][string]$CanonicalName
     )
     process{
         $ErrorActionPreference = "Stop";
@@ -110,6 +106,12 @@ function Install-ScaleFTServerTools(){
             "InitialURL: $($InstanceURL)"  | Out-File $configPath -Encoding "ASCII" -Force
         }
 
+        if ($PSBoundParameters.ContainsKey("CanonicalName")) {
+            $configPath = Join-Path $stateDir -ChildPath "sftd.yaml"
+            New-Item -ItemType directory -Path $stateDir -force
+            "CanonicalName: $($CanonicalName)"  | Out-File $configPath -Append -Encoding "ASCII" -Force
+        }
+
         $msiPath = [System.IO.Path]::ChangeExtension([System.IO.Path]::GetTempFileName(), '.msi')
         $msiLog = [System.IO.Path]::ChangeExtension($msiPath, '.log')
 
@@ -141,4 +143,6 @@ function Install-ScaleFTServerTools(){
     }
 }
 
-Install-ScaleFTServerTools -ToolsVersion "${sftd_version}" -EnrollmentToken "${enrollment_token}" -ReleaseChannel "testing"
+Install-ScaleFTServerTools -ToolsVersion "${sftd_version}" -EnrollmentToken "${enrollment_token}" -ReleaseChannel "testing" -CanonicalName "${canonical_name}"
+
+
