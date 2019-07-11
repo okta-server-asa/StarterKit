@@ -12,7 +12,7 @@ module "instances" {
   name                   = var.name
   environment            = var.environment
   subnet                 = module.net.public_subnet_ids[0]
-  windows_canonical_name = "win-target"
+  windows_canonical_name = var.windows_canonical_name
   sftd_version           = var.sftd_version
   enrollment_token       = var.enrollment_token
   aws_key_path           = var.aws_key_path
