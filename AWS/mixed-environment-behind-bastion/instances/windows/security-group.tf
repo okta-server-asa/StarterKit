@@ -1,7 +1,7 @@
 resource "aws_security_group" "default" {
   description = "Minimum functional ACLs for a ScaleFT Windows node"
 
-  tags {
+  tags = {
     Name = "win-sg"
   }
 

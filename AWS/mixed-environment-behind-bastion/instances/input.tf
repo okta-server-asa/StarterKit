@@ -11,6 +11,10 @@ variable vpc_id {
 }
 
 variable subnet {
+  type = list(any)
+}
+
+variable windows_canonical_name {
   type = "string"
 }
 

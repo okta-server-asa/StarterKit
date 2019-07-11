@@ -4,7 +4,7 @@ resource "aws_subnet" "public" {
   availability_zone = "${element(var.availability_zones, count.index)}"
   count             = "${length(var.cidrs)}"
 
-  tags {
+  tags = {
     Name        = "${var.name}-subnet-${format("%03d", count.index+1)}"
     Environment = "${var.environment}"
     terraform   = true
@@ -26,7 +26,7 @@ resource "aws_route_table" "public" {
     gateway_id = "${var.internet_gateway_id}"
   }
 
-  tags {
+  tags = {
     Name        = "${var.name}-route-table"
     Environment = "${var.environment}"
     terraform   = true
