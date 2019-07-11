@@ -21,6 +21,7 @@ data "template_file" "sftd-windows-userdata" {
   template = "${file("${path.module}/userdata-scripts/userdata-sftd.ps1")}"
 
   vars {
+    canonical_name   = "${var.windows_canonical_name}"
     sftd_version     = "${var.sftd_version}"
     enrollment_token = "${var.enrollment_token}"
   }
