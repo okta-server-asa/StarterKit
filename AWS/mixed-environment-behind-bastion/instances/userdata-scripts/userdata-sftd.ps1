@@ -1,5 +1,13 @@
 # Install ScaleFT Server Tools
 
+# Write sftd config file with a CanonicalName set
+$sftdcfg = @"
+---
+CanonicalName: "${canonical_name}"
+"@
+
+Add-Content "C:\Windows\System32\config\systemprofile\AppData\Local\ScaleFT\sftd.yaml" $sftdcfg
+
 function Get-URL-With-Authenticode(){
     param(
         [Parameter(Mandatory=$true)][string]$url,
