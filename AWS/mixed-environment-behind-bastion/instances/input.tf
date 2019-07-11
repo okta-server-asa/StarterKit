@@ -14,6 +14,10 @@ variable subnet {
   type = list(any)
 }
 
+variable windows_canonical_name {
+  type = "string"
+}
+
 variable sftd_version {
   type = "string"
 }
