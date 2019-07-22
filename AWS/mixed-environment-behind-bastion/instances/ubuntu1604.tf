@@ -18,7 +18,7 @@ data "aws_ami" "ubuntu1604" {
 // Ubuntu node
 module "ubuntu1604" {
   source      = "./linux"
-  tagname     = "ubuntu-testing"
+  tagname     = "ubuntu-target"
   ami         = "${data.aws_ami.ubuntu1604.id}"
   environment = "${var.environment}"
   userdata    = "${data.template_file.sftd-ubuntu-userdata.rendered}"
@@ -28,7 +28,7 @@ module "ubuntu1604" {
 // Ubuntu node
 module "ubuntu1604-bastion" {
   source      = "./linux"
-  tagname     = "ubuntu-testing"
+  tagname     = "ubuntu-bastion"
   ami         = "${data.aws_ami.ubuntu1604.id}"
   environment = "${var.environment}"
   userdata    = "${data.template_file.sftd-ubuntu-bastion-userdata.rendered}"
