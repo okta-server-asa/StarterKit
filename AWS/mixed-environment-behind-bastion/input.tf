@@ -22,7 +22,7 @@ variable "environment" {
 
 variable "sftd_version" {
   type    = string
-  default = "1.40.1"
+  default = "1.50.3"
 }
 
 variable "windows_canonical_name" {
